@@ -5,11 +5,12 @@ body, h1, h2, p, ul, li {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f0f0;
     color: #333;
     line-height: 1.6;
     margin: 20px;
+    font-size: 16px;
 }
 
 header {
@@ -28,7 +29,7 @@ h2 {
     margin-top: 20px;
 }
 
-.project-details, .technical-details {
+.project-details, .technical-details, .about, .gallery, .contact {
     background-color: #fff;
     padding: 20px;
     margin-top: 20px;
@@ -42,4 +43,19 @@ ul {
 
 li {
     margin-bottom: 10px;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.contact a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.contact a:hover {
+    text-decoration: underline;
 }
