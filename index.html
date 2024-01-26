@@ -6,88 +6,248 @@
     <meta name="description" content="Wingman: Aile volante autonome pour la surveillance et la défense de zones. Découvrez comment Wingman protège les cultures contre les ravages causés par les animaux.">
     <meta name="keywords" content="Wingman, aile volante, surveillance, autonomie, protection des cultures">
     <link rel="stylesheet" href="style.css">
-    <title>Projet Wingman</title>
+    <title>Projet Wingman - Accueil</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            font-size: 16px;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            margin: 20px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        section {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .carousel img {
+            flex: 0 0 auto;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel-control-prev, .carousel-control-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .carousel-control-prev {
+            left: 10px;
+        }
+
+        .carousel-control-next {
+            right: 10px;
+        }
+
+        .service-tiers {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card-deck {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            width: 500px;
+            margin: 10px;
+        }
+
+        .card-body {
+            color: #000;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #000;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            z-index: 1000;
+        }
+    </style>
 </head>
 <body>
-    
+
     <header>
-        <h1>Description technique du projet Wingman</h1>
+        <h1>Wingman: l'aile volante qui protège vos cultures</h1>
     </header>
-    <img src="img1.jpg" alt="Wingman en vol">
-    <section class="about">
-        <h2>À Propos de Wingman</h2>
-        <p>
-            Wingman représente une avancée majeure dans la technologie de surveillance aérienne. Conçu pour une utilisation écologique et efficace, il offre une solution innovante pour la gestion de la faune et la protection des cultures.
-        </p>
-        <p>
-            Les ravages causés par les animaux dans les cultures sont un défi constamment croissant pour les agriculteurs. Wingman intervient en tant que solution intelligente, patrouillant les zones agricoles et détectant les animaux indésirables. Grâce à ses capacités de surveillance avancées, il contribue à minimiser les pertes de récolte en prenant des mesures préventives.
-        </p>
-    </section>
-    <section class="project-details">
-        <h2>Introduction</h2>
-        <p>
-            Wingman est une aile volante autonome avec une station de chargement qui est capable de patrouiller une zone voulue et de détecter des animaux et personnes avec une suite de caméras thermiques et optiques. Son rôle principal sera donc la surveillance de zones prédéfinies, et la défense de ces zones contre des animaux qui pourraient endommager les sols et plantations (oiseaux, sangliers, ...) au moyen de systèmes sonores et lumineux.
-        </p>
-    </section>
-    <section class="service-tiers">
-        <h2>Tiers de Service</h2>
-
-        <div class="card-deck">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Service Préventif</h3>
-                    <p class="card-text">
-                        L'aile volante surveille en continu les mouvements des animaux dans les zones agricoles. Grâce à ses capacités de surveillance avancées, elle identifie les comportements suspects et alerte les agriculteurs pour prendre des mesures préventives.
-                    </p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Service Actif</h3>
-                    <p class="card-text">
-                        En cas de détection d'animaux indésirables, l'aile volante active un système sonore puissant pour effrayer les animaux et les éloigner des zones cultivées. Cette intervention immédiate aide à protéger les cultures contre les dommages potentiels.
-                    </p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Service Proactif</h3>
-                    <p class="card-text">
-                        Utilisant des technologies avancées, l'aile volante prédit les zones à risques et estime la présence de nuisibles en détectant des signes de dégâts, même lorsque les animaux ne sont pas visibles. Cette approche proactive permet une gestion anticipée des risques pour minimiser les pertes de récolte.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
     
-    <section class="technical-details">
-        <h2>Caractéristiques techniques</h2>
-        <ul>
-            <li>Design : Aile volante en polymères légers mais durables</li>
-            <li>Propulsion : Hélice arrière et moteur électrique BLDC</li>
-            <li>Contrôle de vol : Ordinateur de vol dédié avec GPS et IMU 9 axes</li>
-            <li>Ordinateur de bord : SOC RK3588s avec 8GB de RAM</li>
-            <li>Système d'exploitation : Linux Debian (Armbian)</li>
-            <li>Communication : Modem 4G</li>
-            <li>Système sonore : Amplificateur connecté en I2S</li>
-            <li>Système lumineux : Contrôlé par PWM</li>
-            <li>Capteur TOF : Time of Flight pour l'altitude</li>
-            <li>Caméras : Caméra thermique (Flir Boson®+ CZ 14-75) et caméra optique haute résolution</li>
-        </ul>
-    </section>
-<section class="gallery">
-    <h2>Galerie</h2>
-    <div class="carousel">
-        <img src="wingman1.jpg" alt="Wingman en vol">
-        <img src="wingman2.jpg" alt="Station de chargement Wingman">
-        <img src="wingman3.jpg" alt="Station de chargement Wingman">
-    </div>
-</section>
-    <section class="contact">
-        <h2>Contactez-Nous</h2>
-        <p>Pour plus d'informations sur Wingman, veuillez nous contacter à: <a href="mailto:contact@wingmanproject.com">contact@wingmanproject.com</a></p>
-    </section>
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="about.html">À Propos</a>
+        <a href="project-details.html">Introduction</a>
+        <a href="service-tiers.html">Tiers de Service</a>
+        <a href="technical-details.html">Caractéristiques techniques</a>
+        <a href="gallery.html">Galerie</a>
+        <a href="contact.html">Contactez-Nous</a>
+    </nav>
+
+    <main>
+        <img src="img1.jpg" alt="Wingman en vol">
+        <section class="about">
+            <h2>À Propos de Wingman</h2>
+            <p>
+                Wingman représente une avancée majeure dans la technologie de surveillance aérienne. Conçu pour une utilisation écologique et efficace, il offre une solution innovante pour la gestion de la faune et la protection des cultures.
+            </p>
+            <p>
+                Les ravages causés par les animaux dans les cultures sont un défi constamment croissant pour les agriculteurs. Wingman intervient en tant que solution intelligente, patrouillant les zones agricoles et détectant les animaux indésirables. Grâce à ses capacités de surveillance avancées, il contribue à minimiser les pertes de récolte en prenant des mesures préventives.
+            </p>
+        </section>
+        <section class="project-details">
+            <h2>Introduction</h2>
+            <p>
+                Wingman est une aile volante autonome avec une station de chargement qui est capable de patrouiller une zone voulue et de détecter des animaux et personnes avec une suite de caméras thermiques et optiques. Son rôle principal sera donc la surveillance de zones prédéfinies, et la défense de ces zones contre des animaux qui pourraient endommager les sols et plantations (oiseaux, sangliers, ...) au moyen de systèmes sonores et lumineux.
+            </p>
+        </section>
+        <section class="service-tiers">
+            <h2>Tiers de Service</h2>
+
+            <div class="card-deck">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Service Préventif</h3>
+                        <p class="card-text">
+                            L'aile volante surveille en continu les mouvements des animaux dans les zones agricoles. Grâce à ses capacités de surveillance avancées, elle identifie les comportements suspects et alerte les agriculteurs pour prendre des mesures préventives.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Service Actif</h3>
+                        <p class="card-text">
+                            En cas de détection d'animaux indésirables, l'aile volante active un système sonore puissant pour effrayer les animaux et les éloigner des zones cultivées. Cette intervention immédiate aide à protéger les cultures contre les dommages potentiels.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Service Proactif</h3>
+                        <p class="card-text">
+                            Utilisant des technologies avancées, l'aile volante prédit les zones à risques et estime la présence de nuisibles en détectant des signes de dégâts, même lorsque les animaux ne sont pas visibles. Cette approche proactive permet une gestion anticipée des risques pour minimiser les pertes de récolte.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="technical-details">
+            <h2>Caractéristiques techniques</h2>
+            <ul>
+                <li>Design : Aile volante en polymères légers mais durables</li>
+                <li>Propulsion : Hélice arrière et moteur électrique BLDC</li>
+                <li>Contrôle de vol : Ordinateur de vol dédié avec GPS et IMU 9 axes</li>
+                <li>Ordinateur de bord : SOC RK3588s avec 8GB de RAM</li>
+                <li>Système d'exploitation : Linux Debian (Armbian)</li>
+                <li>Communication : Modem 4G</li>
+                <li>Système sonore : Amplificateur connecté en I2S</li>
+                <li>Système lumineux : Contrôlé par PWM</li>
+                <li>Capteur TOF : Time of Flight pour l'altitude</li>
+                <li>Caméras : Caméra thermique (Flir Boson®+ CZ 14-75) et caméra optique haute résolution</li>
+            </ul>
+        </section>
+
+        <section class="gallery">
+            <h2>Galerie</h2>
+            <div class="carousel">
+                <img src="wingman1.jpg" alt="Wingman en vol">
+                <img src="wingman2.jpg" alt="Station de chargement Wingman">
+                <img src="wingman3.jpg" alt="Station de chargement Wingman">
+            </div>
+        </section>
+
+        <section class="contact">
+            <h2>Contactez-Nous</h2>
+            <p>Pour plus d'informations sur Wingman, veuillez nous contacter à: <a href="mailto:contact@wingmanproject.com">contact@wingmanproject.com</a></p>
+        </section>
+    </main>
 </body>
 </html>

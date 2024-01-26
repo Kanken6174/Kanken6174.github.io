@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Projet Wingman - Galerie</title>
+    <style>
+        /* Add your existing styles here */
+        .gallery {
+            position: relative;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .gallery img.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .carousel-btn.left {
+            left: 10px;
+        }
+
+        .carousel-btn.right {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Galerie de Wingman</h1>
+    </header>
+    <section class="gallery">
+        <div class="carousel" id="imageCarousel">
+            <img src="wingman1.jpg" alt="Wingman en vol" class="active">
+            <img src="wingman2.jpg" alt="Station de chargement Wingman">
+            <img src="wingman3.jpg" alt="Station de chargement Wingman">
+        </div>
+
+        <button class="carousel-btn left" onclick="changeImage(-1)">&#9665;</button>
+        <button class="carousel-btn right" onclick="changeImage(1)">&#9655;</button>
+    </section>
+
+    <script>
+        // JavaScript for dynamic gallery
+        var currentImageIndex = 0;
+        var images = document.querySelectorAll('.carousel img');
+
+        function showImage(index) {
+            images.forEach(img => img.classList.remove('active'));
+            images[index].classList.add('active');
+        }
+
+        function changeImage(direction) {
+            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+            showImage(currentImageIndex);
+        }
+
+        // Automatic image transition (every 3 seconds)
+        setInterval(function () {
+            changeImage(1);
+        }, 3000);
+    </script>
+</body>
+</html>
