@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Projet Wingman - Galerie</title>
+    <script type="text/javascript" src="three.js"></script>
+    <script type="text/javascript" src="OBJLoader.js"></script>
     <style>
-        /* Add your existing styles here */
         body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
             margin: 0;
+            overflow: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f0f0f0;
             color: #333;
@@ -28,25 +25,38 @@
             text-align: center;
         }
 
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
         .gallery {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .carousel {
             position: relative;
             max-width: 600px;
             margin: 20px;
         }
 
-        .gallery img {
+        .carousel img {
             width: 100%;
             height: auto;
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
 
-        .gallery img.active {
-            display: block;
+        .carousel img.active {
             opacity: 1;
         }
 
@@ -76,7 +86,11 @@
     <header>
         <h1>Galerie de Wingman</h1>
     </header>
-    <section class="gallery">
+
+    <!-- Three.js canvas container -->
+    <div id="canvas-container"></div>
+
+    <div class="gallery">
         <div class="carousel" id="imageCarousel">
             <img src="wingman1.jpg" alt="Wingman en vol" class="active">
             <img src="wingman2.jpg" alt="Station de chargement Wingman">
@@ -85,10 +99,33 @@
 
         <button class="carousel-btn left" onclick="changeImage(-1)">&#9665;</button>
         <button class="carousel-btn right" onclick="changeImage(1)">&#9655;</button>
-    </section>
+    </div>
 
     <script>
-        // JavaScript for dynamic gallery
+        // Three.js setup
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById("canvas-container").appendChild(renderer.domElement);
+
+        var loader = new THREE.OBJLoader();
+        loader.load(
+            'wingman.obj',
+            function (object) {
+                scene.add(object);
+            },
+            function (xhr) {
+                console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+            },
+            function (error) {
+                console.log('An error happened', error);
+            }
+        );
+
+        camera.position.z = 5;
+
+        // Image gallery setup
         var currentImageIndex = 0;
         var images = document.querySelectorAll('.carousel img');
 
@@ -106,6 +143,18 @@
         setInterval(function () {
             changeImage(1);
         }, 3000);
+
+        // Animation loop
+        var animate = function () {
+            requestAnimationFrame(animate);
+            // Rotate the 3D model
+            if (scene.children.length > 0) {
+                scene.children[0].rotation.y += 0.01;
+            }
+            renderer.render(scene, camera);
+        };
+
+        animate();
     </script>
 </body>
 </html>
