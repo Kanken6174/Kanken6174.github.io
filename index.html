@@ -6,7 +6,6 @@
     <meta name="description" content="Wingman: Aile volante autonome pour la surveillance et la défense de zones. Découvrez comment Wingman protège les cultures contre les ravages causés par les animaux.">
     <meta name="keywords" content="Wingman, aile volante, surveillance, autonomie, protection des cultures">
     <link rel="stylesheet" href="style.css">
-    <title>Projet Wingman - Accueil</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -151,6 +150,16 @@
             text-align: center;
             z-index: 1000;
         }
+
+        /* Additional styles for interactivity */
+        .read-more-content {
+            display: none;
+        }
+
+        .read-more-btn {
+            cursor: pointer;
+            color: #007bff;
+        }
     </style>
 </head>
 <body>
@@ -170,7 +179,7 @@
     </nav>
 
     <main>
-        <img src="img1.jpg" alt="Wingman en vol">
+        <img src="wingman_boars.jpg" alt="Wingman en vol">
         <section class="about">
             <h2>À Propos de Wingman</h2>
             <p>
@@ -179,59 +188,34 @@
             <p>
                 Les ravages causés par les animaux dans les cultures sont un défi constamment croissant pour les agriculteurs. Wingman intervient en tant que solution intelligente, patrouillant les zones agricoles et détectant les animaux indésirables. Grâce à ses capacités de surveillance avancées, il contribue à minimiser les pertes de récolte en prenant des mesures préventives.
             </p>
+            <!-- Adding Read More functionality -->
+            <div class="read-more-content">
+                <p>
+                    Plus de détails passionnants sur le fonctionnement de Wingman et son impact positif sur l'agriculture.
+                </p>
+            </div>
+            <p class="read-more-btn" onclick="toggleReadMore()">Lire plus</p>
         </section>
+
         <section class="project-details">
             <h2>Introduction</h2>
             <p>
                 Wingman est une aile volante autonome avec une station de chargement qui est capable de patrouiller une zone voulue et de détecter des animaux et personnes avec une suite de caméras thermiques et optiques. Son rôle principal sera donc la surveillance de zones prédéfinies, et la défense de ces zones contre des animaux qui pourraient endommager les sols et plantations (oiseaux, sangliers, ...) au moyen de systèmes sonores et lumineux.
             </p>
         </section>
+
         <section class="service-tiers">
             <h2>Tiers de Service</h2>
-
-            <div class="card-deck">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title">Service Préventif</h3>
-                        <p class="card-text">
-                            L'aile volante surveille en continu les mouvements des animaux dans les zones agricoles. Grâce à ses capacités de surveillance avancées, elle identifie les comportements suspects et alerte les agriculteurs pour prendre des mesures préventives.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title">Service Actif</h3>
-                        <p class="card-text">
-                            En cas de détection d'animaux indésirables, l'aile volante active un système sonore puissant pour effrayer les animaux et les éloigner des zones cultivées. Cette intervention immédiate aide à protéger les cultures contre les dommages potentiels.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title">Service Proactif</h3>
-                        <p class="card-text">
-                            Utilisant des technologies avancées, l'aile volante prédit les zones à risques et estime la présence de nuisibles en détectant des signes de dégâts, même lorsque les animaux ne sont pas visibles. Cette approche proactive permet une gestion anticipée des risques pour minimiser les pertes de récolte.
-                        </p>
-                    </div>
-                </div>
+    
+            <div class="card-deck" id="serviceCards">
+                <!-- JavaScript will populate this section -->
             </div>
         </section>
-        
+    
         <section class="technical-details">
             <h2>Caractéristiques techniques</h2>
             <ul>
-                <li>Design : Aile volante en polymères légers mais durables</li>
-                <li>Propulsion : Hélice arrière et moteur électrique BLDC</li>
-                <li>Contrôle de vol : Ordinateur de vol dédié avec GPS et IMU 9 axes</li>
-                <li>Ordinateur de bord : SOC RK3588s avec 8GB de RAM</li>
-                <li>Système d'exploitation : Linux Debian (Armbian)</li>
-                <li>Communication : Modem 4G</li>
-                <li>Système sonore : Amplificateur connecté en I2S</li>
-                <li>Système lumineux : Contrôlé par PWM</li>
-                <li>Capteur TOF : Time of Flight pour l'altitude</li>
-                <li>Caméras : Caméra thermique (Flir Boson®+ CZ 14-75) et caméra optique haute résolution</li>
+                <!-- JavaScript will populate this section -->
             </ul>
         </section>
 
@@ -241,13 +225,94 @@
                 <img src="wingman1.jpg" alt="Wingman en vol">
                 <img src="wingman2.jpg" alt="Station de chargement Wingman">
                 <img src="wingman3.jpg" alt="Station de chargement Wingman">
+                <img src="wingman4.jpg" alt="Wingman en vol">
+                <img src="wingman5.jpg" alt="Station de chargement Wingman">
+                <img src="wingman6.jpg" alt="Station de chargement Wingman">
+                <img src="wingman7.jpg" alt="Station de chargement Wingman">
             </div>
         </section>
 
-        <section class="contact">
+        <section class="contact" id="contact">
             <h2>Contactez-Nous</h2>
             <p>Pour plus d'informations sur Wingman, veuillez nous contacter à: <a href="mailto:contact@wingmanproject.com">contact@wingmanproject.com</a></p>
         </section>
     </main>
+
+    <script>
+        // JavaScript for Read More functionality
+        function toggleReadMore() {
+            var readMoreContent = document.querySelector('.read-more-content');
+            var readMoreBtn = document.querySelector('.read-more-btn');
+
+            if (readMoreContent.style.display === 'none' || readMoreContent.style.display === '') {
+                readMoreContent.style.display = 'block';
+                readMoreBtn.textContent = 'Lire moins';
+            } else {
+                readMoreContent.style.display = 'none';
+                readMoreBtn.textContent = 'Lire plus';
+            }
+        }
+
+        // JavaScript to populate Service Tiers
+        var serviceCardsData = [
+            {
+                title: "Service Préventif",
+                description: "L'aile volante surveille en continu les mouvements des animaux dans les zones agricoles. Grâce à ses capacités de surveillance avancées, elle identifie les comportements suspects et alerte les agriculteurs pour prendre des mesures préventives."
+            },
+            {
+                title: "Service Actif",
+                description: "En cas de détection d'animaux indésirables, l'aile volante active un système sonore puissant pour effrayer les animaux et les éloigner des zones cultivées. Cette intervention immédiate aide à protéger les cultures contre les dommages potentiels."
+            },
+            {
+                title: "Service Proactif",
+                description: "Utilisant des technologies avancées, l'aile volante prédit les zones à risques et estime la présence de nuisibles en détectant des signes de dégâts, même lorsque les animaux ne sont pas visibles. Cette approche proactive permet une gestion anticipée des risques pour minimiser les pertes de récolte."
+            }
+        ];
+
+        var serviceCardsContainer = document.getElementById('serviceCards');
+
+        serviceCardsData.forEach(function (service) {
+            var card = document.createElement('div');
+            card.classList.add('card');
+
+            var cardBody = document.createElement('div');
+            cardBody.classList.add('card-body');
+
+            var cardTitle = document.createElement('h3');
+            cardTitle.classList.add('card-title');
+            cardTitle.textContent = service.title;
+
+            var cardText = document.createElement('p');
+            cardText.classList.add('card-text');
+            cardText.textContent = service.description;
+
+            cardBody.appendChild(cardTitle);
+            cardBody.appendChild(cardText);
+            card.appendChild(cardBody);
+            serviceCardsContainer.appendChild(card);
+        });
+
+        // JavaScript to populate Technical Details
+        var technicalDetailsData = [
+            "Design : Aile volante en polymères légers mais durables",
+            "Propulsion : Hélice arrière et moteur électrique BLDC",
+            "Contrôle de vol : Ordinateur de vol dédié avec GPS et IMU 9 axes",
+            "Ordinateur de bord : SOC RK3588s avec 8GB de RAM",
+            "Système d'exploitation : Linux Debian (Armbian)",
+            "Communication : Modem 4G",
+            "Système sonore : Amplificateur connecté en I2S",
+            "Système lumineux : Contrôlé par PWM",
+            "Capteur TOF : Time of Flight pour l'altitude",
+            "Caméras : Caméra thermique (Flir Boson®+ CZ 14-75) et caméra optique haute résolution"
+        ];
+
+        var technicalDetailsContainer = document.querySelector('.technical-details ul');
+
+        technicalDetailsData.forEach(function (detail) {
+            var listItem = document.createElement('li');
+            listItem.textContent = detail;
+            technicalDetailsContainer.appendChild(listItem);
+        });
+    </script>
 </body>
 </html>
