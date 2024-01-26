@@ -5,12 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Projet Wingman - Galerie</title>
-    <script type="text/javascript" src="three.js"></script>
-    <script type="text/javascript" src="OBJLoader.js"></script>
     <style>
         body {
             margin: 0;
-            overflow: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f0f0f0;
             color: #333;
@@ -25,20 +22,11 @@
             text-align: center;
         }
 
-        #canvas-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
         .gallery {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: calc(100vh - 40px); /* Adjusted height */
+            height: 100vh;
             text-align: center;
             overflow: hidden;
         }
@@ -46,12 +34,13 @@
         .carousel {
             position: relative;
             max-width: 600px;
-            margin: 20px;
+            margin: 20px auto;
         }
 
         .carousel img {
             width: 100%;
-            height: auto;
+            height: 400px; /* Set the desired height */
+            object-fit: cover; /* Prevent distortion, cover the container */
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
@@ -87,9 +76,6 @@
         <h1>Galerie de Wingman</h1>
     </header>
 
-    <!-- Three.js canvas container -->
-    <div id="canvas-container"></div>
-
     <div class="gallery">
         <div class="carousel" id="imageCarousel">
             <img src="wingman1.jpg" alt="Wingman en vol" class="active">
@@ -102,30 +88,6 @@
     </div>
 
     <script>
-        // Three.js setup
-        var scene = new THREE.Scene();
-        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / (window.innerHeight - 40), 0.1, 1000);
-        var renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight - 40);
-        document.getElementById("canvas-container").appendChild(renderer.domElement);
-
-        var loader = new THREE.OBJLoader();
-        loader.load(
-            'wingman.obj',
-            function (object) {
-                scene.add(object);
-            },
-            function (xhr) {
-                console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-            },
-            function (error) {
-                console.log('An error happened', error);
-            }
-        );
-
-        camera.position.z = 8; // Adjusted camera position
-
-        // Image gallery setup
         var currentImageIndex = 0;
         var images = document.querySelectorAll('.carousel img');
 
@@ -143,18 +105,6 @@
         setInterval(function () {
             changeImage(1);
         }, 3000);
-
-        // Animation loop
-        var animate = function () {
-            requestAnimationFrame(animate);
-            // Rotate the 3D model
-            if (scene.children.length > 0) {
-                scene.children[0].rotation.y += 0.01;
-            }
-            renderer.render(scene, camera);
-        };
-
-        animate();
     </script>
 </body>
 </html>
