@@ -221,16 +221,9 @@
 
         <section class="gallery">
             <h2>Galerie</h2>
-            <div class="carousel">
-                <img src="wingman1.jpg" alt="Wingman en vol">
-                <img src="wingman2.jpg" alt="Station de chargement Wingman">
-                <img src="wingman3.jpg" alt="Station de chargement Wingman">
-                <img src="wingman4.jpg" alt="Wingman en vol">
-                <img src="wingman5.jpg" alt="Station de chargement Wingman">
-                <img src="wingman6.jpg" alt="Station de chargement Wingman">
-                <img src="wingman7.jpg" alt="Station de chargement Wingman">
-            </div>
+            <div class="carousel" id="imageCarousel"></div>
         </section>
+        
 
         <section class="contact" id="contact">
             <h2>Contactez-Nous</h2>
@@ -239,6 +232,49 @@
     </main>
 
     <script>
+    // Image sources array
+    const imageSources = [
+        "wingman1.jpg",
+        "wingman2.jpg",
+        "wingman3.jpg",
+        "wingman4.jpg",
+        "wingman5.jpg",
+        "wingman6.jpg",
+        "wingman7.jpg"
+    ];
+
+    // Reference to the gallery carousel
+    const carousel = document.getElementById("imageCarousel");
+    const container = document.querySelector(".carousel-container");
+
+    // Dynamically generate gallery images
+    imageSources.forEach((src, index) => {
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = `Wingman Image ${index + 1}`;
+        carousel.appendChild(img);
+    });
+
+    // Set styles for the carousel
+    carousel.style.display = "flex";
+    carousel.style.transition = "transform 1s ease-in-out";
+
+    // Function to move carousel left
+    function moveCarouselLeft() {
+        carousel.style.transform = "translateX(-33.33%)";
+        setTimeout(() => {
+            carousel.appendChild(carousel.firstElementChild);
+            carousel.style.transition = "none";
+            carousel.style.transform = "translateX(0)";
+            setTimeout(() => {
+                carousel.style.transition = "transform 1s ease-in-out";
+            });
+        }, 1000);
+    }
+
+    // Auto-slide every 3 seconds
+    setInterval(moveCarouselLeft, 3000);
+
         // JavaScript for Read More functionality
         function toggleReadMore() {
             var readMoreContent = document.querySelector('.read-more-content');
