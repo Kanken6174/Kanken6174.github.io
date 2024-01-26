@@ -96,3 +96,34 @@ li {
 .carousel-control-next {
     right: 10px;
 }
+
+/* Ajouter ces styles à votre fichier style.css */
+
+.service-tiers {
+    text-align: center;
+    padding: 20px;
+}
+
+.card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    width: 500px;
+    margin: 10px;
+}
+
+.card-body {
+    color: #000; /* Couleur du texte à l'intérieur de la carte */
+}
+
+.card-title {
+    font-size: 1.5rem;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #000;
+}
