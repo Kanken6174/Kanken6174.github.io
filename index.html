@@ -294,15 +294,15 @@
     carousel.style.transition = "transform 1s ease-in-out";
 
     function moveCarouselLeft() {
-        carousel.style.transition = "transform 1s ease-in-out";
+        carousel.style.transition = "transform 0.5s ease-in-out";
         carousel.style.transform = "translateX(-33.33%)";
         setTimeout(() => {
             carousel.appendChild(carousel.firstElementChild);
             carousel.style.transition = "none";
             carousel.style.transform = "translateX(0)";
-            setTimeout(() => {
-                carousel.style.transition = "transform 1s ease-in-out";
-            });
+            //setTimeout(() => {
+            //    carousel.style.transition = "transform 0.5s ease-in-out";
+            //});
         }, 1000);
     }
 
@@ -311,7 +311,7 @@
         carousel.style.transition = "none";
         carousel.insertBefore(carousel.lastElementChild, carousel.firstElementChild);
         setTimeout(() => {
-            carousel.style.transition = "transform 1s ease-in-out";
+            carousel.style.transition = "transform 0.5s ease-in-out";
             carousel.style.transform = "translateX(-33.33%)";
             setTimeout(() => {
                 carousel.style.transform = "translateX(0)";
@@ -323,30 +323,30 @@
     prevBtn.addEventListener("click", moveCarouselRight);
     nextBtn.addEventListener("click", moveCarouselLeft);
 
-    // Function to toggle image size
     function toggleImageSize(img) {
-        const enlargedImages = document.querySelectorAll('.enlarged');
-        enlargedImages.forEach(enlargedImg => {
-            if (enlargedImg !== img) {
-                enlargedImg.classList.remove("enlarged");
-            }
-        });
-
-        img.classList.toggle("enlarged");
-        if (img.classList.contains("enlarged")) {
-            container.style.overflow = "hidden"; // Disable scrolling when an image is enlarged
-        } else {
-            container.style.overflow = "auto"; // Enable scrolling when the image size is normal
+    const enlargedImages = document.querySelectorAll('.enlarged');
+    enlargedImages.forEach(enlargedImg => {
+        if (enlargedImg !== img) {
+            enlargedImg.classList.remove("enlarged");
         }
-    }
-
-    // Resize images to fit three in screen width
-    const carouselWidth = carousel.clientWidth;
-    const imageWidth = carouselWidth / 3 - 10; // Adjusting for margin
-    const images = document.querySelectorAll('.carousel img');
-    images.forEach(img => {
-        img.style.width = `${imageWidth}px`;
     });
+
+    img.classList.toggle("enlarged");
+    if (img.classList.contains("enlarged")) {
+        container.style.overflow = "hidden"; // Disable scrolling when an image is enlarged
+        // Move the clicked image to the leftmost position
+        const index = Array.from(img.parentElement.children).indexOf(img);
+        const offset = -index * (img.clientWidth + 10); // Adjusting for margin
+        carousel.style.transition = "none";
+        carousel.style.transform = `translateX(${offset}px)`;
+        // Force reflow to apply the transform immediately
+        void carousel.offsetWidth;
+        carousel.style.transition = "transform 0.5s ease-in-out";
+        carousel.style.transform = "translateX(0)";
+    } else {
+        container.style.overflow = "auto"; // Enable scrolling when the image size is normal
+    }
+}
 //---------------------------------------------------------------------------------------------
         // JavaScript for Read More functionality
         function toggleReadMore() {
@@ -403,16 +403,16 @@
 
         // JavaScript to populate Technical Details
         var technicalDetailsData = [
-            "Design : Aile volante en polymères légers mais durables",
-            "Propulsion : Hélice arrière et moteur électrique BLDC",
-            "Contrôle de vol : Ordinateur de vol dédié avec GPS et IMU 9 axes",
-            "Ordinateur de bord : SOC RK3588s avec 8GB de RAM",
-            "Système d'exploitation : Linux Debian (Armbian)",
-            "Communication : Modem 4G",
-            "Système sonore : Amplificateur connecté en I2S",
-            "Système lumineux : Contrôlé par PWM",
-            "Capteur TOF : Time of Flight pour l'altitude",
-            "Caméras : Caméra thermique (Flir Boson®+ CZ 14-75) et caméra optique haute résolution"
+            "♨️ Design : Aile volante en polymères légers mais durables ",
+            "✈️ Propulsion : Hélice arrière et moteur électrique BLDC",
+            "🎛 Contrôle de vol : Ordinateur de vol dédié avec GPS et IMU 9 axes",
+            "🖥 Ordinateur de bord : SOC RK3588s avec 8GB de RAM",
+            "💾 Système d'exploitation : Linux Debian (Armbian)",
+            "🛜 Communication : Modem 4G",
+            "🎙 Système sonore : Amplificateur connecté en I2S",
+            "🔦 Système lumineux : LEDs haute puissance concentrées optiquement",
+            "🎚 Capteur TOF : Time of Flight pour l'altitude",
+            "📸 Caméras : Caméra thermique (Flir Boson®+ CZ 14-75) et caméra optique haute résolution"
         ];
 
         var technicalDetailsContainer = document.querySelector('.technical-details ul');
