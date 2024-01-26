@@ -7,6 +7,26 @@
     <meta name="keywords" content="Wingman, aile volante, surveillance, autonomie, protection des cultures">
     <link rel="stylesheet" href="style.css">
     <style>
+
+.carousel-btn {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .carousel-btn:hover {
+        background-color: #0056b3;
+    }
+
+    .carousel-container {
+        display: flex;
+        align-items: center;
+    }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f0f0f0;
@@ -160,6 +180,12 @@
             cursor: pointer;
             color: #007bff;
         }
+
+        .carousel img.enlarged {
+            max-width: 100%;
+            height: auto;
+            cursor: zoom-out;
+        }
     </style>
 </head>
 <body>
@@ -221,13 +247,18 @@
 
         <section class="gallery">
             <h2>Galerie</h2>
-            <div class="carousel" id="imageCarousel"></div>
+            <div class="carousel-container">
+                <button id="prevBtn" class="carousel-btn">&lt;</button>
+                <div class="carousel" id="imageCarousel"></div>
+                <button id="nextBtn" class="carousel-btn">&gt;</button>
+            </div>
         </section>
+        
         
 
         <section class="contact" id="contact">
             <h2>Contactez-Nous</h2>
-            <p>Pour plus d'informations sur Wingman, veuillez nous contacter à: <a href="mailto:contact@wingmanproject.com">contact@wingmanproject.com</a></p>
+            <p>Pour plus d'informations sur Wingman, veuillez nous contacter:<a href="contact.html">formulaire</a></p>
         </section>
     </main>
 
@@ -237,21 +268,24 @@
         "wingman1.jpg",
         "wingman2.jpg",
         "wingman3.jpg",
-        "wingman4.jpg",
-        "wingman5.jpg",
-        "wingman6.jpg",
-        "wingman7.jpg"
+        "wingman4.png",
+        "wingman5.png",
+        "wingman7.png",
+        "wingman_top.png"
     ];
 
     // Reference to the gallery carousel
     const carousel = document.getElementById("imageCarousel");
     const container = document.querySelector(".carousel-container");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
 
     // Dynamically generate gallery images
     imageSources.forEach((src, index) => {
         const img = document.createElement("img");
         img.src = src;
         img.alt = `Wingman Image ${index + 1}`;
+        img.addEventListener("click", () => toggleImageSize(img));
         carousel.appendChild(img);
     });
 
@@ -259,8 +293,8 @@
     carousel.style.display = "flex";
     carousel.style.transition = "transform 1s ease-in-out";
 
-    // Function to move carousel left
     function moveCarouselLeft() {
+        carousel.style.transition = "transform 1s ease-in-out";
         carousel.style.transform = "translateX(-33.33%)";
         setTimeout(() => {
             carousel.appendChild(carousel.firstElementChild);
@@ -272,9 +306,33 @@
         }, 1000);
     }
 
-    // Auto-slide every 3 seconds
-    setInterval(moveCarouselLeft, 3000);
+    // Function to move carousel right
+    function moveCarouselRight() {
+        carousel.style.transition = "none";
+        carousel.insertBefore(carousel.lastElementChild, carousel.firstElementChild);
+        setTimeout(() => {
+            carousel.style.transition = "transform 1s ease-in-out";
+            carousel.style.transform = "translateX(-33.33%)";
+            setTimeout(() => {
+                carousel.style.transform = "translateX(0)";
+            });
+        });
+    }
 
+    // Manual control buttons
+    prevBtn.addEventListener("click", moveCarouselRight);
+    nextBtn.addEventListener("click", moveCarouselLeft);
+
+    // Function to toggle image size
+    function toggleImageSize(img) {
+        img.classList.toggle("enlarged");
+        if (img.classList.contains("enlarged")) {
+            container.style.overflow = "hidden"; // Disable scrolling when an image is enlarged
+        } else {
+            container.style.overflow = "auto"; // Enable scrolling when the image size is normal
+        }
+    }
+//---------------------------------------------------------------------------------------------
         // JavaScript for Read More functionality
         function toggleReadMore() {
             var readMoreContent = document.querySelector('.read-more-content');
