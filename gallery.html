@@ -38,7 +38,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            height: calc(100vh - 40px); /* Adjusted height */
             text-align: center;
             overflow: hidden;
         }
@@ -104,9 +104,9 @@
     <script>
         // Three.js setup
         var scene = new THREE.Scene();
-        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / (window.innerHeight - 40), 0.1, 1000);
         var renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(window.innerWidth, window.innerHeight - 40);
         document.getElementById("canvas-container").appendChild(renderer.domElement);
 
         var loader = new THREE.OBJLoader();
@@ -123,7 +123,7 @@
             }
         );
 
-        camera.position.z = 5;
+        camera.position.z = 8; // Adjusted camera position
 
         // Image gallery setup
         var currentImageIndex = 0;
