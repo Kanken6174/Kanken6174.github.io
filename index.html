@@ -325,6 +325,13 @@
 
     // Function to toggle image size
     function toggleImageSize(img) {
+        const enlargedImages = document.querySelectorAll('.enlarged');
+        enlargedImages.forEach(enlargedImg => {
+            if (enlargedImg !== img) {
+                enlargedImg.classList.remove("enlarged");
+            }
+        });
+
         img.classList.toggle("enlarged");
         if (img.classList.contains("enlarged")) {
             container.style.overflow = "hidden"; // Disable scrolling when an image is enlarged
@@ -332,6 +339,14 @@
             container.style.overflow = "auto"; // Enable scrolling when the image size is normal
         }
     }
+
+    // Resize images to fit three in screen width
+    const carouselWidth = carousel.clientWidth;
+    const imageWidth = carouselWidth / 3 - 10; // Adjusting for margin
+    const images = document.querySelectorAll('.carousel img');
+    images.forEach(img => {
+        img.style.width = `${imageWidth}px`;
+    });
 //---------------------------------------------------------------------------------------------
         // JavaScript for Read More functionality
         function toggleReadMore() {
